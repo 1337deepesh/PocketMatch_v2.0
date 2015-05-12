@@ -1,0 +1,56 @@
+Pocket-Match(version2.0) README file:
+Deepesh Nagarajan, 2011, NSC lab. 
+
+These programs/scripts generate all-to-all Pocket-Match(PM) pocket-comparison scores for given pocket-descriptor input-files (cabbage format). 
+
+The end-user workflow is as follows: 
+
+1) enter the 'Pocketmatch_v2.0' directory on terminal: 
+    
+    $ cd PocketMatch_v2.0 
+
+2) Create 'alpha-files'. A sampling of PDB-format pockets is provided in the 'Sample_pockets' folder: 
+
+    $ cd alpha-file_maker 
+    $ bash Step0-cabbage.sh Sample_pockets 
+
+to explore other options, simply type: 
+    
+    $ bash Step0-cabbage.sh 
+
+3) Run pocketmatch of generated alpha_file (outfile.cabbage) 
+
+    $ cd ../ 
+    $ ./Step3-PM_serial alpha-file_maker/outfile.cabbage 
+
+4) interpret output: 
+
+    $ cat PocketMatch_score.txt            #this file contains the similarity score.
+    $ cat PocketMatch_pairs.txt|fold -64   #this file contains pairings of similar residues. 
+
+5) Altering the code: If you are unsatisfied with the speed of Pocketmatch (./Step3-PM_serial), then you can turn off the 'sphinx module' (it generates the 'PocketMatch_pairs.txt' file). This is how you can do it: 
+    
+    $ #TURN OFF SPHINX MODULE 
+    $ sed -i s/"#define SUMA_TOGGLE 1"/"#define SUMA_TOGGLE 0"/ Step3-PM_serial.c 
+    $ gcc4.4 -o Step3-PMserial Step3-PMserial.c -lm -m32 
+
+    $ #TURN ON SPHINX MODULE 
+    $ sed -i s/"#define SUMA_TOGGLE 0"/"#define SUMA_TOGGLE 1"/ Step3-PM_serial.c 
+    $ gcc4.4 -o Step3-PMserial Step3-PMserial.c -lm -m32 
+
+ONLINE HELP: 
+If you still have unresolved issues, e-mail me at 1337deepesh@gmail.com 
+I may or may not reply. 
+
+UPDATE (Tuesday 12 May 2015 05:55:36 PM IST): 
+All programs were written on a 32-bit machine. If you're using a 64-bit maching and want to re-compile any programs, then use these commands: 
+    
+   $ gcc4.4 -o Step2-compressor Step2-compressor.c 
+   $ gcc4.4 -o Step3-PMserial Step3-PMserial.c -lm -m32 
+
+NOTE:
+The MPI version has not been tested on 64-bit operating systems and is NOT GUARANTEED TO WORK. I strongly recommend using the serial version on multiple processors instead.
+
+CITATION: 
+Nagarajan, D., & Chandra, N. (2013, February). PocketMatch (version 2.0): A parallel algorithm for the detection of structural similarities between protein ligand binding-sites. In Parallel Computing Technologies (PARCOMPTECH), 2013 National Conference on (pp. 1-6). IEEE.
+
