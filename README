@@ -1,5 +1,6 @@
-Pocket-Match(version2.0) README file:
-Deepesh Nagarajan, 2011, NSC lab. 
+PocketMatch (version 2.0): A parallel algorithm for the detection of structural similarities between protein ligand binding-sites  
+
+Copyright (C) 2011 Deepesh Nagarajan (1337deepesh@gmail.com) This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License <http://www.gnu.org/licenses/> for more details. 
 
 These programs/scripts generate all-to-all Pocket-Match(PM) pocket-comparison scores for given pocket-descriptor input-files (cabbage format). 
 
@@ -53,4 +54,3 @@ The MPI version has not been tested on 64-bit operating systems and is NOT GUARA
 
 CITATION: 
 Nagarajan, D., & Chandra, N. (2013, February). PocketMatch (version 2.0): A parallel algorithm for the detection of structural similarities between protein ligand binding-sites. In Parallel Computing Technologies (PARCOMPTECH), 2013 National Conference on (pp. 1-6). IEEE.
-
